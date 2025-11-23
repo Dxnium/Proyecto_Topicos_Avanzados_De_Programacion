@@ -7,6 +7,7 @@ namespace GestionDePersonas.DA
         public DBContexto(DbContextOptions<DBContexto> options) : base(options)
         {
         }
-        public DbSet<GestionDePersonas.Model.Persona> Personas { get; set; }    
+        public DbSet<GestionDePersonas.Model.Persona> Personas { get; set; }
+        public DbSet<GestionDePersonas.Model.Vehiculo> Vehiculos { get; set; }
     }
 }
