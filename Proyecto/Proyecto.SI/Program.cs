@@ -14,8 +14,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DBContexto>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddScoped<GestionDePersonas.BL.IPersonaRepository,PersonaRepository>();
-builder.Services.AddScoped<GestionDePersonas.BL.IAdministradorDePersonas,AdministradorDePersonas>();
+builder.Services.AddScoped<GestionDePersonas.BL.IPersonaRepository, PersonaRepository>();
+builder.Services.AddScoped<GestionDePersonas.BL.IAdministradorDePersonas, AdministradorDePersonas>();
+builder.Services.AddScoped<GestionDePersonas.BL.IAdministradorDeVehiculos, AdministradorDeVehiculos>();
+builder.Services.AddScoped<GestionDePersonas.BL.IVehiculoRepository, VehiculoRepository>();
 
 var app = builder.Build();
 

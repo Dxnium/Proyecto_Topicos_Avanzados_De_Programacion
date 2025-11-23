@@ -8,6 +8,7 @@ namespace GestionDePersonas.BL
         Task Delete(int id);
         Task<IEnumerable<Vehiculo>> Read();
         Task Update(int id, Vehiculo vehiculo);
+        Task<Vehiculo?> ObtenerPorId(int id);
         Task<IEnumerable<Vehiculo>> ObtenerVehiculosPorIdPersona(int id);
     }
 }
