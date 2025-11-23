@@ -27,9 +27,7 @@ jobs:
         run: dotnet build --configuration Release
 
       - name: dotnet publish
-        run: |
-          cd Proyecto/Proyecto.SI
-          dotnet publish -c Release -o "${{env.DOTNET_ROOT}}/myapp"
+        run: dotnet publish -c Release -o "${{env.DOTNET_ROOT}}/myapp"
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
@@ -53,9 +51,9 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_B658F1086E7B42C19DAE815005F4EE9C }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_CA23E9C1D6674ED8A4FDFABA7C74C0A7 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_0BF04B33610646FFBB9ABBD1238863D7 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_6894C3538C7947348EA2B9DF20A1A1F0 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_F6F9AED0C1FE42C99E4F42C8CBA32087 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_129204326AC44D6F9C9598F6CA6FA941 }}
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
@@ -64,5 +62,4 @@ jobs:
           app-name: 'ProyectoTopicosGrupo3'
           slot-name: 'Production'
           package: .
-
           
