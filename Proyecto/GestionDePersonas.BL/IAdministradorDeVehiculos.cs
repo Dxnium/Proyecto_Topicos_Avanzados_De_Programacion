@@ -10,5 +10,6 @@ namespace GestionDePersonas.BL
         Task Update(int id, Vehiculo vehiculo);
         Task<Vehiculo?> ObtenerPorId(int id);
         Task<IEnumerable<Vehiculo>> ObtenerVehiculosPorIdPersona(int id);
+        Task AsignarPropietario(int id_vehiculo, int id_persona);
     }
 }

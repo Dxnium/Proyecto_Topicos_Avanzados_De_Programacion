@@ -33,14 +33,12 @@ namespace GestionDePersonas.DA
         public Task<Vehiculo?> ObtenerVehiculoPorId(int id)
         {
             return _context.Vehiculos
-                .Include(v => v.Persona)
                 .FirstOrDefaultAsync(v => v.Id == id);
         }
 
         public Task<Vehiculo?> ObtenerVehiculoPorPlaca(string placa)
         {
             return _context.Vehiculos
-                .Include(v => v.Persona)
                 .FirstOrDefaultAsync(v => v.Placa == placa);
         }
 
@@ -48,14 +46,12 @@ namespace GestionDePersonas.DA
         {
             return await _context.Vehiculos
                 .Where(v => v.PersonaId == personaId)
-                .Include(v => v.Persona)
                 .ToListAsync();
         }
 
         public async Task<IEnumerable<Vehiculo>> Read()
         {
             return await _context.Vehiculos
-                .Include(v => v.Persona)
                 .ToListAsync();
         }
 
@@ -70,6 +66,19 @@ namespace GestionDePersonas.DA
                 vehiculoDB.Marca = vehiculo.Marca;
                 vehiculoDB.Modelo = vehiculo.Modelo;
                 vehiculoDB.Anio = vehiculo.Anio;
+
+                _context.Vehiculos.Update(vehiculoDB);
+                await _context.SaveChangesAsync();
+            }
+        }
+
+        public async Task AsignarPropietario(int id_vehiculo, int id_persona)
+        {
+            var vehiculoDB = await ObtenerVehiculoPorId(id_vehiculo);
+
+            if (vehiculoDB != null)
+            {
+                vehiculoDB.PersonaId = id_persona;
 
                 _context.Vehiculos.Update(vehiculoDB);
                 await _context.SaveChangesAsync();

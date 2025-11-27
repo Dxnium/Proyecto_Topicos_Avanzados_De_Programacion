@@ -11,6 +11,7 @@ namespace GestionDePersonas.BL
         Task<Vehiculo?> ObtenerVehiculoPorId(int id);
         Task<IEnumerable<Vehiculo?>> ObtenerVehiculosPorIdPersona(int id);
         Task<Vehiculo?> ObtenerVehiculoPorPlaca(string placa);
+        Task AsignarPropietario(int id_vehiculo, int id_persona);
 
     }
 }

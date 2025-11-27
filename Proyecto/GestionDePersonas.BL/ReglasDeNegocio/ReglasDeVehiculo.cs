@@ -7,16 +7,10 @@ namespace GestionDePersonas.BL.ReglasDeNegocio
         public static bool ElVehiculoEsValido(Vehiculo vehiculo)
         {
             return
-            ElIdPersonaEsValido(vehiculo) &&
             LaPlacaEsValida(vehiculo) &&
             LaMarcaEsValida(vehiculo) &&
             ElModeloEsValido(vehiculo) &&
             ElAnioEsValido(vehiculo);
-        }
-
-        public static bool ElIdPersonaEsValido(Vehiculo vehiculo)
-        {
-            return vehiculo.PersonaId > 0;
         }
 
         public static bool LaPlacaEsValida(Vehiculo vehiculo)

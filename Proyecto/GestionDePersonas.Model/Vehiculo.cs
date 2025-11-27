@@ -11,9 +11,8 @@ namespace GestionDePersonas.Model
         [Key]
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "El campo PersonaId es requerido")]
         [ForeignKey("Persona")]
-        public int PersonaId { get; set; }   // FK
+        public int? PersonaId { get; set; }   // FK
 
         [Required(ErrorMessage = "El campo Placa es requerido")]
         [StringLength(10, ErrorMessage = "La placa no debe tener más de 10 caracteres")]
@@ -29,8 +28,6 @@ namespace GestionDePersonas.Model
 
         [Required(ErrorMessage = "El campo Año es requerido")]
         public int Anio { get; set; }
-
-        public Persona Persona { get; set; }
     }
 
 }

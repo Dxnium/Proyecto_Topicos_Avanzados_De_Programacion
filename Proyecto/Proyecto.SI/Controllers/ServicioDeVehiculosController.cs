@@ -72,7 +72,7 @@ namespace Proyecto.SI.Controllers
             return Ok(vehiculo);
         }
 
-        [HttpGet("ObtenerVehiculoPorIdPerosna/{id}")]
+        [HttpGet("ObtenerVehiculoPorIdPersona/{id}")]
         public async Task<ActionResult<Vehiculo>> ObtenerVehiculoPorPlaca(int id)
         {
             var vehiculo = await _admin.ObtenerVehiculosPorIdPersona(id);
@@ -82,6 +82,13 @@ namespace Proyecto.SI.Controllers
             }
 
             return Ok(vehiculo);
+        }
+
+        [HttpPost("AsignarPropietario/{id_vehiculo}/{id_persona}")]
+        public async Task<ActionResult<Vehiculo>> AsignarPropietario(int id_vehiculo, int id_persona)
+        {
+            await _admin.AsignarPropietario(id_vehiculo, id_persona);
+            return Ok();
         }
     }
 }

@@ -6,10 +6,12 @@ namespace GestionDePersonas.BL
     public class AdministradorDeVehiculos : IAdministradorDeVehiculos
     {
         private readonly IVehiculoRepository vehiculoRepository;
+        private readonly IPersonaRepository personaRepository;
 
-        public AdministradorDeVehiculos(IVehiculoRepository vehiculoRepository)
+        public AdministradorDeVehiculos(IVehiculoRepository vehiculoRepository, IPersonaRepository personaRepository)
         {
             this.vehiculoRepository = vehiculoRepository;
+            this.personaRepository = personaRepository;
         }
 
         public async Task Create(Vehiculo vehiculo)
@@ -96,6 +98,27 @@ namespace GestionDePersonas.BL
 
             return await vehiculoRepository.ObtenerVehiculosPorIdPersona(id);
 
+        }
+
+        public async Task AsignarPropietario(int id_vehiculo, int id_persona)
+        {
+            if (!ReglasDePersona.ElIdEsValido(id_persona) || !ReglasDeVehiculo.ElIdEsValido(id_vehiculo))
+            {
+                throw new ArgumentException("El ID peronsa o vehiculo es incorrecto");
+            }
+
+            Vehiculo? vehiculo = await vehiculoRepository.ObtenerVehiculoPorId(id_vehiculo);
+            if (vehiculo == null)
+            {
+                throw new ArgumentException("El ID vehiculo no existe");
+            }
+            Persona? persona = await personaRepository.ObtenerPorId(id_persona);
+            if (persona == null)
+            {
+                throw new ArgumentException("El ID persona no existe");
+            }
+
+            await vehiculoRepository.AsignarPropietario(id_vehiculo, id_persona);
         }
     }
 }
