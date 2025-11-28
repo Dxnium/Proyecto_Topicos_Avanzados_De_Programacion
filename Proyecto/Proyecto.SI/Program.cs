@@ -11,10 +11,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<DBContexto>(options =>
-    options.UseInMemoryDatabase("Proyecto_TopicosDB"));
 //builder.Services.AddDbContext<DBContexto>(options =>
-//    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+//    options.UseInMemoryDatabase("Proyecto_TopicosDB"));
+builder.Services.AddDbContext<DBContexto>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddScoped<GestionDePersonas.BL.IPersonaRepository, PersonaRepository>();
 builder.Services.AddScoped<GestionDePersonas.BL.IAdministradorDePersonas, AdministradorDePersonas>();
