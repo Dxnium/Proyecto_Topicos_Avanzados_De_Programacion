@@ -21,6 +21,9 @@ builder.Services.AddScoped<GestionDePersonas.BL.IAdministradorDePersonas, Admini
 builder.Services.AddScoped<GestionDePersonas.BL.IAdministradorDeVehiculos, AdministradorDeVehiculos>();
 builder.Services.AddScoped<GestionDePersonas.BL.IVehiculoRepository, VehiculoRepository>();
 
+builder.Services.AddScoped<GestionDePersonas.BL.IAdministradorDeUsuarios, AdministradorDeUsuarios>();
+builder.Services.AddScoped<GestionDePersonas.BL.IUsuarioRepository, UsuarioRepository>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
