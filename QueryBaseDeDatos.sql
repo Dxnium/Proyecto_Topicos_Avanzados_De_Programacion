@@ -28,5 +28,11 @@ CREATE TABLE Vehiculo (
 ); 
 GO
 
-
-
+-- Crear table Usuario
+CREATE TABLE Usuario (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    Email NVARCHAR(40) NOT NULL,
+    Codigo NVARCHAR(40) NOT NULL,
+    Contrasena NVARCHAR(40) NOT NULL
+); 
+GO
