@@ -86,6 +86,15 @@ namespace GestionDePersonas.BL
                 throw new ArgumentException("La placa ya está registrada en otro vehículo.");
             }
 
+            if (vehiculo.PersonaId != null)
+            {
+                var persona = personaRepository.ObtenerPorId(vehiculo.PersonaId.Value);
+                if (persona != null)
+                {
+                    throw new ArgumentException("El personaId no existe");
+                }
+            }
+
             await vehiculoRepository.Update(id, vehiculo);
         }
 
