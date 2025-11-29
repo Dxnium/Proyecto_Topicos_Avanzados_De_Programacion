@@ -19,7 +19,7 @@ CREATE TABLE Persona (
 -- Crear table Vehiculo
 CREATE TABLE Vehiculo (
     Id INT IDENTITY(1,1) PRIMARY KEY,
-    PersonaId INT NOT NULL,
+    PersonaId INT NULL,
     CONSTRAINT FK_Vehiculo_Persona FOREIGN KEY (PersonaId) REFERENCES Persona(Id),
     Placa NVARCHAR(10) NOT NULL,
     Marca NVARCHAR(50) NOT NULL,
